@@ -23,10 +23,12 @@ def add_victory(data, r):
     data[r[0]["id"]]["wins"] += 1
 
 
+def local_run_tournament(q: Queue, bot_instances):
+    res, _ = play_tournament_table(bot_instances, 1000)
+    q.put(res)
+
+
 def run_benchmark_parallel(bots, run_count):
-    def local_run_tournament(q: Queue, bot_instances):
-        res, _ = play_tournament_table(bot_instances, 1000)
-        q.put(res)
 
     start_time = time.time()
 
