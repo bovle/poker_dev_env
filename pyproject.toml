@@ -9,6 +9,6 @@ description = ""
 name = "poker-dev-env"
 version = "0.1.0"
 [tool.poetry.dependencies]
-poker-game-runner = "0.1.13"
+poker-game-runner = "^0.1.14"
 python = "^3.8"
 [tool.poetry.dev-dependencies]
