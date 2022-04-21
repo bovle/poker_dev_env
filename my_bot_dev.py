@@ -4,7 +4,7 @@ from poker_game_runner.utils import Range, HandType
 
 class Bot:
   def get_name(self):
-      return "replace with name"
+      return "REPLACE ME"
   
   def act(self, obs: Observation):
     return 0
