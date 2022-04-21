@@ -2,6 +2,11 @@
 from poker_game_runner.state import Observation
 from poker_game_runner.utils import Range, HandType
 
+"""
+  This bot folds until it has less that 20 big blinds left. It then goes into panic mode to try and stay in the tournament.
+  It's important to be aware of how many big blinds you have left so you dont just lose to the increasing blinds.
+"""
+
 class Bot:
 
   def __init__(self) -> None:
@@ -13,13 +18,14 @@ class Bot:
       return "panic_bot"
   
   def act(self, obs: Observation):
-    my_stack_in_blinds = obs.player_infos[obs.my_index].stack / obs.big_blind
+    my_stack_in_blinds = obs.get_my_player_info().stack / obs.big_blind
     if my_stack_in_blinds < 20:
       return self.do_preflop_panic(obs, my_stack_in_blinds)
     else:
       return 0
   
   def do_preflop_panic(self, obs:Observation, my_stack_in_blinds):
+    # smaller stack size = larger range because small stack size will not last long. We need to go all in faster with smaller stacks
     if my_stack_in_blinds < 10:
       r = self.r25
     elif my_stack_in_blinds < 15:

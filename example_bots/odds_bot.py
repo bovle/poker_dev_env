@@ -2,6 +2,13 @@
 from poker_game_runner.state import Observation
 from poker_game_runner.utils import Range, HandType
 
+"""
+  This bot calculates the odds it is given to call and uses this to determine how good it's hand needs to be to call.
+  If nobody has raised before, this bot uses some simple logic to determine if it should raise or not.
+
+  "open" == first raise in round
+"""
+
 class Bot:
 
   def __init__(self) -> None:
@@ -21,7 +28,7 @@ class Bot:
       
   def do_preflop(self, obs: Observation):
     raise_actions = [action for action in obs.get_actions_this_round() if action.action > 1]
-    if len(raise_actions) == 0: # Open
+    if len(raise_actions) == 0: # Open 
       return self.do_preflop_open(obs)
 
     if len(raise_actions) > 0:
@@ -48,16 +55,16 @@ class Bot:
     call_odds = obs.get_call_size() / obs.get_pot_size()
     my_hand_type = obs.get_my_hand_type()
     if call_odds < 0.1:
-      return 1 #call small raise
+      return 1 #call all small raises
     elif call_odds < 0.3:
       if my_hand_type >= HandType.PAIR and my_hand_type.value > obs.get_board_hand_type().value:
-        return obs.get_fraction_pot_raise(1)
+        return 1
     elif call_odds < 0.6:
       if my_hand_type > HandType.PAIR and my_hand_type.value > obs.get_board_hand_type().value+1:
-        return obs.get_fraction_pot_raise(1)
+        return 1
     else:
       if my_hand_type > HandType.TWOPAIR and my_hand_type.value > obs.get_board_hand_type().value+1:
-        return obs.get_fraction_pot_raise(1)
+        return 1
 
     return 0
 
@@ -71,7 +78,7 @@ class Bot:
   def do_preflop_response(self, obs:Observation):
     call_odds = obs.get_call_size() / obs.get_pot_size()
     if call_odds < 0.1:
-      return 1 #call small raise
+      return 1 #call all small raises
     elif call_odds < 0.3:
       r = self.r16
     elif call_odds < 0.6:

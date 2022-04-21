@@ -2,6 +2,12 @@
 from poker_game_runner.state import Observation
 from poker_game_runner.utils import Range, HandType
 
+"""
+  This bot tries to steal the pot with a min raise if everyone checks to it.
+  Checks are a sign of a weak hand, so there is a good chance that the player will fold to a raise.
+"""
+
+
 class Bot:
   def get_name(self):
       return "checkmate"

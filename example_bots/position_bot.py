@@ -2,6 +2,13 @@
 from poker_game_runner.state import Observation
 from poker_game_runner.utils import Range, HandType
 
+"""
+  This bot plays differently depending on the amount of players left in the hand.
+  This is very important in poker as 
+    more poeple = more hands that can beat your hand, 
+    and less people = less hands that can beat your hand (if any).
+"""
+
 class Bot:
 
   def __init__(self) -> None:
@@ -19,16 +26,8 @@ class Bot:
       return self.do_preflop(obs)
     else:
       return self.do_postflop(obs)
-      
-  def do_preflop(self, obs: Observation):
-    raise_actions = [action for action in obs.get_actions_this_round() if action.action > 1]
-    if len(raise_actions) == 0: # Open
-      return self.do_preflop_open(obs)
 
-    if len(raise_actions) > 0:
-      return self.do_preflop_response(obs)
-
-  def do_preflop_open(self, obs:Observation):
+  def do_preflop(self, obs:Observation):
     active_player_count = len(obs.get_active_players())
 
     if active_player_count <= 2:
@@ -47,20 +46,7 @@ class Bot:
     else:
       return 0
 
-  def do_preflop_response(self, obs:Observation):
-    r = self.r6
-    if r.is_hand_in_range(obs.my_hand):
-      return obs.get_fraction_pot_raise(1) # raise 1 pot
-    else:
-      return 0
-
   def do_postflop(self, obs:Observation):
-    if obs.get_call_size() == 0:
-      return self.do_post_flop_open(obs)
-    else:
-      return self.do_post_flop_response(obs)
-  
-  def do_post_flop_open(self, obs:Observation):
     active_player_count = len(obs.get_active_players())
     r = False
     my_hand_type = obs.get_my_hand_type()
@@ -85,9 +71,3 @@ class Bot:
 
   def is_card_rank_in_hand(self, rank, hand):
     return rank in hand[0] or rank in hand[1]
-
-  def do_post_flop_response(self, obs: Observation):
-    my_hand_type = obs.get_my_hand_type()
-    if my_hand_type >= HandType.THREEOFAKIND and my_hand_type.value > obs.get_board_hand_type().value+1:
-      return obs.get_fraction_pot_raise(1)
-    return 0
