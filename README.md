@@ -70,15 +70,15 @@ There is a raise count limitation of 5. This means that the number of raises in 
 ## Setup
 We recommend you use replit.com to develop your bot. It is an online IDE which makes the environment setup painless.
 
-If you want to use something else, please be aware that we use some libraries that are linux only.
+If you want to use something else, please be aware that we use some libraries that are linux only and you will have to copy your code to replit for submission.
 
 Guide:
 - open link https://replit.com/@frederikblund/pokerdevenv
 - press `fork repl`
 - log in with google or other
 - Press `Run` at the top. 
-- Wait for the necessary packages to be installed
-- Share your repl with 'nctbk' by clicking the `invite` button in the top right.
+- Wait for the necessary packages to be installed (1-2 min)
+- Share your repl with 'nctbk' by clicking the `invite` button in the top right. (ignore the "no results" warning when searching for 'nctbk')
 - You are now ready to code.
 
 
