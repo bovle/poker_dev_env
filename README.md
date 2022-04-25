@@ -62,7 +62,7 @@ The tournament will play up to 10 bots against each other until only one of them
 During the Tournament the blinds will increase between games at specific intervals to make sure the tournament ends and discourage passive plays
 
 ### Special rules for this tournament
-If a bot has less than 1 big blind at the end of a hand they are taking out of the tournament as if they had no money left.
+If a bot has less than 1 big blind at the end of a hand they are taken out of the tournament as if they had no money left.
 
 There is a raise count limitation of 5. This means that the number of raises in one betting round is limited to 5.
 
