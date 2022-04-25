@@ -89,7 +89,7 @@ This file will be run when the green run button is pressed.
 In this file you can change which bots will play in the tournament by adding/removing bots from the bots list.
 
 There are 2 ways to test your bot:
-- `run_tabl(bots)` runs 1 single tournament to the end, and outputs details to the console. This can be used for debugging and general development.
+- `run_table(bots)` runs 1 single tournament to the end, and outputs details to the console. This can be used for debugging and general development.
 - `run_benchmark(bots, n)` runs n tournaments and outputs win count for each bot. This is used for getting an indication of the overall strength of the bots compared to each other.
 
 ### `my_bot_dev.py` and `my_bot_master.py`
