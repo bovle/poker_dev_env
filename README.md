@@ -17,7 +17,7 @@
     - [Poker hand / hand type](#poker-hand--hand-type)
     - [Board cards / Public cards / Community cards](#board-cards--public-cards--community-cards)
 
-In this challenge you will write a poker playing bot to compete against the other perticipents.
+In this challenge you will write a poker playing bot to compete against the other participants.
 
 ## Introduction to the rules of poker
 The bots will be playing no-limit texas holdem poker.
@@ -28,7 +28,7 @@ Each player is delt 2 private cards face down.
 
 Over the course of the game 5 public community cards are delt (called board cards).
 
-To win the player must either get every other player to fold (given up on their hand), or have the best poker hand at the end of the game.
+To win the player must either get every other player to fold (given up on their hand) or have the best poker hand at the end of the game.
 
 The poker hand is made up of the 5 best cards out of the 2 private cards the player is delt and the 5 board cards shared with all players. 
 
@@ -38,7 +38,7 @@ The game takes place over 4 betting rounds as described below:
 - the 2 players next to the dealer input the small blind and big blind to the pot.
 - each player is delt 2 cards
   - PreFlop (betting round 0)
-    - players can fold, call or raise
+    - players can fold, call, or raise
     - this continues until all players have either folded or called the last raise.
     - if 2 or more players have not folded, play continues to the next betting round
   - Flop (betting round 1)
@@ -52,14 +52,14 @@ The game takes place over 4 betting rounds as described below:
   - River (betting round 3)
     - 1 board cards is delt to a total of 5
     - play continues as described in the flop section
-    - if 2 or more players have not folded, all players reveal their hands and the best hand wins the pot
+    - if 2 or more players have not folded, all players reveal their hands, and the best hand wins the pot
 
 ### Tournament setup
 The bots will play poker in a tournament format, winner takes all.
 
 The tournament will play up to 10 bots against each other until only one of them has any money left.
 
-During the Tournament the blinds will increase between games at specific intervals to make sure the tournament ends and discurage passive plays
+During the Tournament the blinds will increase between games at specific intervals to make sure the tournament ends and discourage passive plays
 
 ### Special rules for this tournament
 If a bot has less than 1 big blind at the end of a hand they are taking out of the tournament as if they had no money left.
@@ -70,14 +70,14 @@ There is a raise count limitation of 5. This means that the number of raises in 
 ## Setup
 We recommend you use replit.com to develop your bot. It is an online IDE which makes the environment setup painless.
 
-If you want to use something else please be aware that we use some libraries that are linux only.
+If you want to use something else, please be aware that we use some libraries that are linux only.
 
 Guide:
 - open link https://replit.com/@frederikblund/pokerdevenv
 - press `fork repl`
 - log in with google or other
 - Press `Run` at the top. 
-- Wait for The necessary packages to be installed
+- Wait for the necessary packages to be installed
 - Share your repl with 'nctbk' by clicking the `invite` button in the top right.
 - You are now ready to code.
 
@@ -86,11 +86,11 @@ Guide:
 ### `main.py`
 This file will be run when the green run button is pressed.
 
-In this file you can change which bots wil play in the turnament by adding/removing bots from the bots list.
+In this file you can change which bots will play in the tournament by adding/removing bots from the bots list.
 
 There are 2 ways to test your bot:
-- `run_tabl(bots)` runs 1 single turnament to the end, and outputs details to the console. This can be used for debugging and general development.
-- `run_benchmark(bots, n)` runs n tournaments and outputs wincount for each bot. This is used for getting an indication of the overall strength of the bots compared to each other.
+- `run_tabl(bots)` runs 1 single tournament to the end, and outputs details to the console. This can be used for debugging and general development.
+- `run_benchmark(bots, n)` runs n tournaments and outputs win count for each bot. This is used for getting an indication of the overall strength of the bots compared to each other.
 
 ### `my_bot_dev.py` and `my_bot_master.py`
 these files are where you will write you own bot. 
@@ -99,7 +99,7 @@ these files are where you will write you own bot.
 
 `my_bot_dev.py` can be use for general development and experimentation.
 
-You can add as many files as you want with different versions of your bot (or other perticipant's bots) which can be usefull to see if your improvements actually help
+You can add as many files as you want with different versions of your bot (or other participant’s bots) which can be useful to see if your improvements actually help
 
 ### `example_bots` folder
 In this folder there are examples of bots to get inspiration from.
@@ -117,14 +117,14 @@ The return integer represents the action your bot is taking:
   
 The observation object has all the information needed to make a decision. It has many attributes and helper functions to make coding easier, check them out in the [DOCS](https://poker-game-runner.readthedocs.io/en/latest/poker_game_runner.html) or in the example bots.
 
-The observation object has an important atribute `legal_actions` that returns a list of integers, which are legal actions at the current state of the game.
+The observation object has an important attribute `legal_actions` that returns a list of integers, which are legal actions at the current state of the game.
 
 :warning: Make sure your bot returns a legal action :warning: if the returned action is not in legal_actions your bot will fold.
 
 
 ## Details
 ### Card
-a card is represented by a 2 character string. 1 char with the rank and 1 char with the suit
+a card is represented by a 2-character string. 1 char with the rank and 1 char with the suit
 
 examples: `'As'` (ace of spades), `'6d'` (six of diamonds), `'Tc'` (ten of clubs)
 
