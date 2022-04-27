@@ -120,6 +120,7 @@ The observation object has all the information needed to make a decision. It has
 The observation object has an important attribute `legal_actions` that returns a list of integers, which are legal actions at the current state of the game.
 
 :warning: Make sure your bot returns a legal action :warning: if the returned action is not in legal_actions your bot will fold.
+:warning: There is a time limit of 1 second for your bot to return :warning: if you bot takes longer, you bot will fold.
 
 
 ## Details
