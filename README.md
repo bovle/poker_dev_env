@@ -121,7 +121,7 @@ The observation object has an important attribute `legal_actions` that returns a
 
 :warning: Make sure your bot returns a legal action :warning: if the returned action is not in legal_actions your bot will fold.
 
-:warning: There is a time limit of 1 second for your bot to return :warning: if you bot takes longer, you bot will fold.
+:warning: There is a time limit of 1 second for your bot to return :warning: if your bot takes longer, your bot will fold.
 
 
 ## Details
