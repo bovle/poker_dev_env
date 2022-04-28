@@ -136,7 +136,7 @@ A hand is the 2 private cards each player is delt. the hand is represented by a 
 examples: `('As', 'Ah')` 
 
 ### Poker hand / hand type
-A poker hand or hand type is the type of poker hand that 5 cards can make. hand types are represented my the enum `HandType`
+A poker hand or hand type is the type of poker hand that 5 cards can make. hand types are represented by the enum `HandType`
 
 example `HandType.FLUSH`, `HandType.PAIR`
 
@@ -145,4 +145,7 @@ the Board cards are the shared cards delt on the board that any player can use t
 
 examples: `('3h', '5c', '2s')` or `('4h', 'Qd' 'Jh', 'Kd', 'Th')`
 
-
+### Range
+A range is a way to group cards that you will play the same way. A range is represented by the class `Range`
+The `Range` class constructor takes a rangeString. The rangeString can be generated from https://www.pokerhandrange.com/.
+To check if your current hand is in the range you have create use the `is_hand_in_range(current_hand)` method
